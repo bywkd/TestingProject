@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CompanyProject</string>
+    <string name="kakao_app_key">c90b47dba847b993ca1ea145dbb15b4b</string>
+    <string name="kakao_api_key"> f999a41bcbdb050ae3e21a443b213537</string>
+</resources>
