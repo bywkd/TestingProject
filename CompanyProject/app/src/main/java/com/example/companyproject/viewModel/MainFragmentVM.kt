@@ -55,7 +55,6 @@ class MainFragmentVM : ViewModel {
         }
     }
 
-
     val scrollListener = object : RecyclerView.OnScrollListener() {
 
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {

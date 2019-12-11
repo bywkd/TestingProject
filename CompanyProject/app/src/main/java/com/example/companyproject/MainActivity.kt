@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
             DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         binding.apply {
-            mainActivityVM = MainActivityVM(ft)
-        }.mainActivityVM!!.fragmentMainFragment()
+            vm = MainActivityVM(ft)
+        }.vm!!.fragmentMainFragment()
     }
 }
