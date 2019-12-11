@@ -87,11 +87,11 @@ class MainFragment : Fragment(), MainFragmentCon {
     }
 
     override fun addListAll(list: ArrayList<SearchImage.Document>) {
-        searchAdapter?.let { it.addListAll(list) }
+        searchAdapter?.addListAll(list)
     }
 
     override fun setListAll(list: ArrayList<SearchImage.Document>) {
-        searchAdapter?.let { it.setListAll(list) }
+        searchAdapter?.setListAll(list)
     }
 
     override fun progressState(state: Boolean) {
