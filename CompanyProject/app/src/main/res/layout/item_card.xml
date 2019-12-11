@@ -19,7 +19,7 @@
 
         <FrameLayout
             android:id="@+id/fl_picture"
-            android:layout_width="match_parent"
+            android:layout_width="@{vm.imgWidth,default= match_parent}"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,11 +27,12 @@
 
             <ImageView
                 android:id="@+id/imgView_picture"
-                android:layout_width="wrap_content"
+                android:layout_width="@{vm.imgWidth,default= wrap_content}"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter" />
+                android:scaleType="fitCenter"
+                app:imgViewGlide="@{vm.imgUrl}" />
         </FrameLayout>
 
 
