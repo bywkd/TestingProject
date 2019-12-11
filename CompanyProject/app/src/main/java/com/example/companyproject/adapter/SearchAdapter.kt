@@ -13,8 +13,8 @@ import com.example.companyproject.util.GlideApp
 import kotlinx.android.synthetic.main.item_card.view.*
 
 
-class ImageAdapter(activity: FragmentActivity) :
-    RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
+class SearchAdapter(activity: FragmentActivity) :
+    RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
     private var activity: FragmentActivity = activity
     private var list: ArrayList<SearchImage.Document> = arrayListOf()
 
