@@ -4,12 +4,15 @@ import android.graphics.Point
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.request.target.Target
 import com.example.companyproject.R
+import com.example.companyproject.databinding.ItemCardBinding
 import com.example.companyproject.model.SearchImage
 import com.example.companyproject.util.GlideApp
+import com.example.companyproject.viewModel.SearchAdapterVM
 import kotlinx.android.synthetic.main.item_card.view.*
 
 
@@ -19,8 +22,17 @@ class SearchAdapter(activity: FragmentActivity) :
     private var list: ArrayList<SearchImage.Document> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(activity).inflate(R.layout.item_card, parent, false)
-        return ViewHolder(view)
+        val binding: ItemCardBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            R.layout.item_card,
+            parent,
+            false
+        )
+
+        binding.vm = SearchAdapterVM()
+
+
+        return ViewHolder(binding.root, binding.vm!!)
     }
 
     override fun getItemCount(): Int {
@@ -46,16 +58,15 @@ class SearchAdapter(activity: FragmentActivity) :
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
-
+    inner class ViewHolder(
+        view: View,
+        vm: SearchAdapterVM
+    ) : RecyclerView.ViewHolder(view) {
+        private val vm: SearchAdapterVM = vm
         private val flPicture = view.fl_picture
         private val imgViewPicture = view.imgView_picture
-        private val tvDisplaySiteName = view.tv_display_siteName
-        private val tvDateTime = view.tv_dateTime
-        private val tvCollection = view.tv_collection
         fun onBind(data: SearchImage.Document) {
-
+            vm.setData(data)
             val point = Point()
             activity.windowManager.defaultDisplay.getRealSize(point)
 
@@ -75,10 +86,6 @@ class SearchAdapter(activity: FragmentActivity) :
             } else {
                 glideLoadUrl.fitCenter().into(imgViewPicture)
             }
-
-            tvDisplaySiteName.text = data.displaySitename
-            tvDateTime.text = data.datetime
-            tvCollection.text = data.collection
         }
     }
 }
