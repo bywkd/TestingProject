@@ -1,112 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tool="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="5dp">
+    xmlns:tool="http://schemas.android.com/tools">
 
-    <FrameLayout
-        android:id="@+id/fl_picture"
+    <data>
+
+        <variable
+            name="vm"
+            type="com.example.companyproject.viewModel.SearchAdapterVM" />
+    </data>
+
+    <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="horizontal"
+        android:padding="5dp">
 
-        <ImageView
-            android:id="@+id/imgView_picture"
-            android:layout_width="wrap_content"
+        <FrameLayout
+            android:id="@+id/fl_picture"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter" />
-    </FrameLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        app:layout_constraintBaseline_toBaselineOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:id="@+id/ll_display_siteName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
+            <ImageView
+                android:id="@+id/imgView_picture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="출처명: "
-                android:textColor="#000000"
-                android:textSize="20sp" />
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter" />
+        </FrameLayout>
 
-            <TextView
-                android:id="@+id/tv_display_siteName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                tool:text="이름" />
-        </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/ll_dateTime"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ll_display_siteName">
+            android:layout_marginStart="10dp"
+            app:layout_constraintBaseline_toBaselineOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/ll_display_siteName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="문서 작성시간: "
-                android:textColor="#000000"
-                android:textSize="20sp" />
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/tv_dateTime"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="출처명: "
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.displaySiteName}"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    tool:text="이름" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_dateTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                tool:text="문서 작성시간" />
-        </LinearLayout>
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ll_display_siteName">
 
-        <LinearLayout
-            android:id="@+id/ll_collection"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ll_dateTime">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="문서 작성시간: "
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
-            <TextView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.dateTime}"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    tool:text="문서 작성시간" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_collection"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="컬렉션: "
-                android:textColor="#000000"
-                android:textSize="20sp" />
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ll_dateTime">
 
-            <TextView
-                android:id="@+id/tv_collection"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                tool:text="컬렉션" />
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="컬렉션: "
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.collection}"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    tool:text="컬렉션" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</LinearLayout>
+    </LinearLayout>
+</layout>
 
